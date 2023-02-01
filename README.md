@@ -12,3 +12,10 @@ We found this weird message being passed around on the servers, we think we have
 
 PingSweep.py
 This is a simple pythin script that i wrote that takes an input from the user in XXX.XXX.XXX. format in order to sweep all IP addresses on a network.
+
+
+bruteForceBypass.sh
+This is a script I wrote in order to bypass the bruteforce protection on a website that I was authorise to attack, this website contained the user "think" and the password "123" in the html comments. This "think" user was a regular user with valid credentials. 
+I used this script in order to generate the usernames.txt file which inserted "think" and the other username found using wpscan, "admin" in alternating lines.
+This script also took in a supplied wordlist and inserted "123" into every second line and generated a new password list.
+These two files were used with burpsuite pitchfork attack to gain access to the admin account
