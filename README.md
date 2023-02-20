@@ -26,3 +26,7 @@ These two files were used with burpsuite pitchfork attack to gain access to the 
 passwordCrack4.Decoder.py
 
 This script was created using a password list given within the python program provided by picoCTF in the "PW Crack 4" challenge in order to loop through all the passwords given and find the correct one for the program
+
+pwCrack5.Decoder.py
+
+This script was created in a similar mannar to passwordCrack4.Decoder.py in order to get the password for the python program provided in the picoCTF challenge "PW Crack 5". This time, a dictionary was provided, but there were white spaces surrounding the passwords, as such the python fuction "strip" was used.
