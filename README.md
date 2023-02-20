@@ -1,5 +1,5 @@
 # CyberSec
-Cyber security scripts from brainnest course
+Cyber security scripts created during my practice on picoCTF
 
 
 This repo contains any and all scripts that I write for capturing flags on picoCTF
@@ -21,3 +21,8 @@ This is a script I wrote in order to bypass the bruteforce protection on a websi
 I used this script in order to generate the usernames.txt file which inserted "think" and the other username found using wpscan, "admin" in alternating lines.
 This script also took in a supplied wordlist and inserted "123" into every second line and generated a new password list.
 These two files were used with burpsuite pitchfork attack to gain access to the admin account
+
+
+passwordCrack4.Decoder.py
+
+This script was created using a password list given within the python program provided by picoCTF in order to loop through all the passwords given and find the correct one for the program
