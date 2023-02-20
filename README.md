@@ -25,4 +25,4 @@ These two files were used with burpsuite pitchfork attack to gain access to the 
 
 passwordCrack4.Decoder.py
 
-This script was created using a password list given within the python program provided by picoCTF in order to loop through all the passwords given and find the correct one for the program
+This script was created using a password list given within the python program provided by picoCTF in the "PW Crack 4" challenge in order to loop through all the passwords given and find the correct one for the program
