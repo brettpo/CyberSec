@@ -30,3 +30,7 @@ This script was created using a password list given within the python program pr
 pwCrack5.Decoder.py
 
 This script was created in a similar mannar to passwordCrack4.Decoder.py in order to get the password for the python program provided in the picoCTF challenge "PW Crack 5". This time, a dictionary was provided, but there were white spaces surrounding the passwords, as such the python fuction "strip" was used.
+
+keygenme-py-solve.py
+
+This script was created in order to solve the challenge "keygenme-py" on picoCTF. This script decodes the key to unlock the full version of the program provided by converting the positions of the username, set out in the if tree in the program, into sha256 and adding them to the first and last parts of the key in order to get the full key
