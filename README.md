@@ -35,7 +35,13 @@ This script was created in a similar mannar to passwordCrack4.Decoder.py in orde
 
 This script was created in order to solve the challenge "keygenme-py" on picoCTF. This script decodes the key to unlock the full version of the program provided by converting the positions of the username, set out in the if tree in the program, into sha256 and adding them to the first and last parts of the key in order to get the full key
 
-### base64.py
+### Tryhackme Scripting
 
-This script was created to solve the ctf challenge "scripting" on tryhackme, URL: https://tryhackme.com/room/scripting.
+these scripts were created to solve the ctf challenge "scripting" on tryhackme, URL: https://tryhackme.com/room/scripting.
+
+####base64.py
 This script reads a file "b64.txt", decodes the base64 50 times, and prints the flag.
+
+####sockets.py
+
+This script creates a socket connection to the host, and tries ports starting from 0 and adds or subtracts a number according to the webpage response, until it hits the desired port to solve the challenge. 
