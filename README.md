@@ -14,3 +14,4 @@ This is the file that contains any writeups that I create for CTF challenges
 
 ### Empline: https://tryhackme.com/room/empline
 ### Surfer: https://tryhackme.com/room/surfer
+### Boiler: https://tryhackme.com/room/boilerctf2
