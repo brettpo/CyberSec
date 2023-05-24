@@ -44,4 +44,11 @@ This script reads a file "b64.txt", decodes the base64 50 times, and prints the 
 
 ####sockets.py
 
-This script creates a socket connection to the host, and tries ports starting from 0 and adds or subtracts a number according to the webpage response, until it hits the desired port to solve the challenge. 
+This script creates a socket connection to the host, and tries ports starting from 0 and adds or subtracts a number according to the webpage response, until it hits the desired port to solve the challenge.
+
+
+###Hack The Box
+
+####zoneTransfer.sh
+
+I created this script to automate the domain zone transfer process, it takes a list of subdomains (  automated using dig axfr inlanefreight.htb @10.129.112.212 | grep 'IN' | awk '{print $1}' | grep -v '^inlanefreight.htb.' | sed 's/\.$//' | sort -u | awk '{print "\""$0"\""}'  ) and loops through them to see which subdomains allow for transfer
