@@ -47,9 +47,9 @@ This script reads a file "b64.txt", decodes the base64 50 times, and prints the 
 This script creates a socket connection to the host, and tries ports starting from 0 and adds or subtracts a number according to the webpage response, until it hits the desired port to solve the challenge.
 
 
-###Hack The Box
+### Hack The Box
 
-####zoneTransfer.sh
+#### zoneTransfer.sh
 
 I created this script to automate the domain zone transfer process, it takes a list of subdomains and loops through them to see which subdomains allow for transfer
 
