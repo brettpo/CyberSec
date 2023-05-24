@@ -51,4 +51,6 @@ This script creates a socket connection to the host, and tries ports starting fr
 
 ####zoneTransfer.sh
 
-I created this script to automate the domain zone transfer process, it takes a list of subdomains (  automated using dig axfr inlanefreight.htb @10.129.112.212 | grep 'IN' | awk '{print $1}' | grep -v '^inlanefreight.htb.' | sed 's/\.$//' | sort -u | awk '{print "\""$0"\""}'  ) and loops through them to see which subdomains allow for transfer
+I created this script to automate the domain zone transfer process, it takes a list of subdomains and loops through them to see which subdomains allow for transfer
+
+
