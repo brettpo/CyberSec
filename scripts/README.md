@@ -39,10 +39,10 @@ This script was created in order to solve the challenge "keygenme-py" on picoCTF
 
 these scripts were created to solve the ctf challenge "scripting" on tryhackme, URL: https://tryhackme.com/room/scripting.
 
-####base64.py
+#### base64.py
 This script reads a file "b64.txt", decodes the base64 50 times, and prints the flag.
 
-####sockets.py
+#### sockets.py
 
 This script creates a socket connection to the host, and tries ports starting from 0 and adds or subtracts a number according to the webpage response, until it hits the desired port to solve the challenge.
 
