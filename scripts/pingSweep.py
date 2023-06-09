@@ -1,11 +1,18 @@
-import os
-hostname = input("Please enter IP in XXX.XXX.XXX. format: ") 
+import subprocess
+import socket
 
-for ip in range(0,151):
-    newhost = hostname + str(ip)
-    response = os.system("ping -c 1 -w 1 " + newhost)
+subnet = input("Please enter IP in XXX.XXX.XXX format: ")   # Specify your subnet here
+range_start = 1        # Specify the start of the IP range here
+range_end = 254        # Specify the end of the IP range here
 
-    if response ==0 :
-        print(newhost, 'is up')
-    else:
-        print(newhost, 'is down')
+for ip in range(range_start, range_end + 1):
+    target = f"{subnet}.{ip}"
+    result = subprocess.run(['ping', '-c', '1', '-W', '1', target], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+    if result.returncode == 0:
+        try:
+            hostname = socket.gethostbyaddr(target)[0]
+        except socket.herror:
+            hostname = "Unknown"
+        
+        print(f"Host {target} is up. Hostname: {hostname}")
