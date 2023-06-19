@@ -70,9 +70,4 @@ for ip in range(range_start, range_end + 1):
         if verbose:
             print(f"Host {target} is up. Hostname: {hostname}")
         else:
-            print(f"Host {target} is up.")
-    else:
-        if verbose:
-            print(f"Host {target} is down.")
-        else:
-            print(f"Host {target} is down.")
+            print(f"Host {target} is up. Hostname: {hostname}")
